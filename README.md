@@ -1,7 +1,8 @@
-oclif-hello-world
+config-or-ask
 =================
 
-oclif example Hello World CLI
+This is a CLI that helps you get values in your bash scripts. The way it works is that it looks to see if the variable name you're looking for is in a file or in the environment and if it is there then it returns that value. If the value is not there, then it asks the user for input and then stores that for future use.
+
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
@@ -10,9 +11,32 @@ oclif example Hello World CLI
 [![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
 <!-- toc -->
+* [Quick Installation](#quick-installation)
+* [Full Installation](#full-installation)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+
+
+# Quick Installation
+
+```bash
+npm install -g config-or-ask
+```
+
+# Full Installation
+
+In order to provide this CLI to all users, we'll want to install it from the binaries provided. Download the `.tar.gz` file from the releases page.
+
+Then run the following to install:
+```bash
+tar -xvf config-or-ask-<version>.tar.gz
+sudo rm -rf /usr/local/src/config-or-ask
+sudo rm -rf /usr/local/bin/config-or-ask
+sudo mv config-or-ask /usr/local/src/config-or-ask
+sudo ln -s /usr/local/src/config-or-ask/bin/config-or-ask /usr/local/bin/config-or-ask
+```
+
 # Usage
 <!-- usage -->
 ```sh-session
@@ -20,7 +44,7 @@ $ npm install -g config-or-ask
 $ config-or-ask COMMAND
 running command...
 $ config-or-ask (--version)
-config-or-ask/0.0.0 linux-x64 node-v16.15.0
+config-or-ask/1.0.0 linux-x64 node-v16.15.0
 $ config-or-ask --help [COMMAND]
 USAGE
   $ config-or-ask COMMAND
@@ -29,58 +53,76 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`config-or-ask hello PERSON`](#config-or-ask-hello-person)
-* [`config-or-ask hello world`](#config-or-ask-hello-world)
+* [`config-or-ask delete VARIABLE`](#config-or-ask-delete-variable)
+* [`config-or-ask get VARIABLE`](#config-or-ask-get-variable)
 * [`config-or-ask help [COMMAND]`](#config-or-ask-help-command)
-* [`config-or-ask plugins`](#config-or-ask-plugins)
-* [`config-or-ask plugins:install PLUGIN...`](#config-or-ask-pluginsinstall-plugin)
-* [`config-or-ask plugins:inspect PLUGIN...`](#config-or-ask-pluginsinspect-plugin)
-* [`config-or-ask plugins:install PLUGIN...`](#config-or-ask-pluginsinstall-plugin-1)
-* [`config-or-ask plugins:link PLUGIN`](#config-or-ask-pluginslink-plugin)
-* [`config-or-ask plugins:uninstall PLUGIN...`](#config-or-ask-pluginsuninstall-plugin)
-* [`config-or-ask plugins:uninstall PLUGIN...`](#config-or-ask-pluginsuninstall-plugin-1)
-* [`config-or-ask plugins:uninstall PLUGIN...`](#config-or-ask-pluginsuninstall-plugin-2)
-* [`config-or-ask plugins update`](#config-or-ask-plugins-update)
 
-## `config-or-ask hello PERSON`
+## `config-or-ask delete VARIABLE`
 
-Say hello
+Adds the ability to delete a variable from the config
 
 ```
 USAGE
-  $ config-or-ask hello [PERSON] -f <value>
+  $ config-or-ask delete [VARIABLE] [-p <value>]
 
 ARGUMENTS
-  PERSON  Person to say hello to
+  VARIABLE  The name of the variable you would like to get
 
 FLAGS
-  -f, --from=<value>  (required) Who is saying hello
+  -p, --config=<value>  Path to config file (not required, we use one from your local home directory if you do not
+                        specify one)
 
 DESCRIPTION
-  Say hello
+  Adds the ability to delete a variable from the config
 
 EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
+  $ config-or-ask delete
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/entrostat/config-or-ask/blob/v0.0.0/dist/commands/hello/index.ts)_
+_See code: [dist/commands/delete.ts](https://github.com/entrostat/config-or-ask/blob/v1.0.0/dist/commands/delete.ts)_
 
-## `config-or-ask hello world`
+## `config-or-ask get VARIABLE`
 
-Say hello world
+Gets the variable you are looking for from the config file or environment. If it cannot find a value, it asks you for it. You're able to disable the environment or config files if you don't want it to use those.
 
 ```
 USAGE
-  $ config-or-ask hello world
+  $ config-or-ask get [VARIABLE] [-e] [-c] [-p <value>]
+
+ARGUMENTS
+  VARIABLE  The name of the variable you would like to get
+
+FLAGS
+  -c, --skip-config     Don't look at config file for the value
+  -e, --skip-env        Don't look at environment variables for the value
+  -p, --config=<value>  Path to config file (not required, we use one from your local home directory if you do not
+                        specify one)
 
 DESCRIPTION
-  Say hello world
+  Gets the variable you are looking for from the config file or environment. If it cannot find a value, it asks you for
+  it. You're able to disable the environment or config files if you don't want it to use those.
+
+  If the config does not exist, it will create it for you.
+
+  The order of importance is:
+
+  1. Config file
+  2. Environment variable
+  3. User input
 
 EXAMPLES
-  $ config-or-ask hello world
-  hello world! (./src/commands/hello/world.ts)
+  $ config-or-ask get MY_VARIABLE_NAME
+
+  $ config-or-ask get MY_VARIABLE_NAME --skip-env
+
+  $ config-or-ask get MY_VARIABLE_NAME --skip-config
+
+  $ config-or-ask get MY_VARIABLE_NAME --config=./path/to/config.json
+
+  MY_VARIABLE_NAME=$(config-or-ask get MY_VARIABLE_NAME)
 ```
+
+_See code: [dist/commands/get.ts](https://github.com/entrostat/config-or-ask/blob/v1.0.0/dist/commands/get.ts)_
 
 ## `config-or-ask help [COMMAND]`
 
@@ -101,234 +143,4 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.20/src/commands/help.ts)_
-
-## `config-or-ask plugins`
-
-List installed plugins.
-
-```
-USAGE
-  $ config-or-ask plugins [--core]
-
-FLAGS
-  --core  Show core plugins.
-
-DESCRIPTION
-  List installed plugins.
-
-EXAMPLES
-  $ config-or-ask plugins
-```
-
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.1.9/src/commands/plugins/index.ts)_
-
-## `config-or-ask plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
-USAGE
-  $ config-or-ask plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
-
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Installs a plugin into the CLI.
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-
-ALIASES
-  $ config-or-ask plugins add
-
-EXAMPLES
-  $ config-or-ask plugins:install myplugin 
-
-  $ config-or-ask plugins:install https://github.com/someuser/someplugin
-
-  $ config-or-ask plugins:install someuser/someplugin
-```
-
-## `config-or-ask plugins:inspect PLUGIN...`
-
-Displays installation properties of a plugin.
-
-```
-USAGE
-  $ config-or-ask plugins:inspect PLUGIN...
-
-ARGUMENTS
-  PLUGIN  [default: .] Plugin to inspect.
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Displays installation properties of a plugin.
-
-EXAMPLES
-  $ config-or-ask plugins:inspect myplugin
-```
-
-## `config-or-ask plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
-USAGE
-  $ config-or-ask plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
-
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Installs a plugin into the CLI.
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-
-ALIASES
-  $ config-or-ask plugins add
-
-EXAMPLES
-  $ config-or-ask plugins:install myplugin 
-
-  $ config-or-ask plugins:install https://github.com/someuser/someplugin
-
-  $ config-or-ask plugins:install someuser/someplugin
-```
-
-## `config-or-ask plugins:link PLUGIN`
-
-Links a plugin into the CLI for development.
-
-```
-USAGE
-  $ config-or-ask plugins:link PLUGIN
-
-ARGUMENTS
-  PATH  [default: .] path to plugin
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Links a plugin into the CLI for development.
-  Installation of a linked plugin will override a user-installed or core plugin.
-
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
-  command will override the user-installed or core plugin implementation. This is useful for development work.
-
-
-EXAMPLES
-  $ config-or-ask plugins:link myplugin
-```
-
-## `config-or-ask plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ config-or-ask plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ config-or-ask plugins unlink
-  $ config-or-ask plugins remove
-```
-
-## `config-or-ask plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ config-or-ask plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ config-or-ask plugins unlink
-  $ config-or-ask plugins remove
-```
-
-## `config-or-ask plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ config-or-ask plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ config-or-ask plugins unlink
-  $ config-or-ask plugins remove
-```
-
-## `config-or-ask plugins update`
-
-Update installed plugins.
-
-```
-USAGE
-  $ config-or-ask plugins update [-h] [-v]
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Update installed plugins.
-```
 <!-- commandsstop -->

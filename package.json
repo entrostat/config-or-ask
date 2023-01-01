@@ -60,8 +60,8 @@
         "test": "mocha --forbid-only \"test/**/*.test.ts\"",
         "version": "oclif readme && git add README.md",
         "readme": "oclif readme",
-        "release": "entro-version release --master-branch-name=main --during-release-post-hook=\"npm run readme && git commit -am 'Updated the readme'\"",
-        "release:major": "entro-version release --master-branch-name=main --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run readme && git commit -am 'Updated the readme'\""
+        "release": "entro-version release --master-branch-name=main --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\"",
+        "release:major": "entro-version release --master-branch-name=main --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\""
     },
     "engines": {
         "node": ">=12.0.0"

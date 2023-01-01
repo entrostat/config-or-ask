@@ -11,6 +11,8 @@ This is a CLI that helps you get values in your bash scripts. The way it works i
 [![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
 <!-- toc -->
+* [Quick Installation](#quick-installation)
+* [Full Installation](#full-installation)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->

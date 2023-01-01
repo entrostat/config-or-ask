@@ -1,6 +1,6 @@
 {
     "name": "config-or-ask",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "CLI that stores values in a config and can be called in bash scripts. If the value is not in the config, then it'll look in your environment variables and if it's not there, it'll ask the user for input. It's a form of caching information for use in bash scripts.",
     "author": "Kerren Ortlepp @Kerren-Entrostat",
     "bin": {

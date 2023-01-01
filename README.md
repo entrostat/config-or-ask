@@ -44,7 +44,7 @@ $ npm install -g config-or-ask
 $ config-or-ask COMMAND
 running command...
 $ config-or-ask (--version)
-config-or-ask/0.0.0 linux-x64 node-v16.15.0
+config-or-ask/1.0.0 linux-x64 node-v16.15.0
 $ config-or-ask --help [COMMAND]
 USAGE
   $ config-or-ask COMMAND
@@ -79,7 +79,7 @@ EXAMPLES
   $ config-or-ask delete
 ```
 
-_See code: [dist/commands/delete.ts](https://github.com/entrostat/config-or-ask/blob/v0.0.0/dist/commands/delete.ts)_
+_See code: [dist/commands/delete.ts](https://github.com/entrostat/config-or-ask/blob/v1.0.0/dist/commands/delete.ts)_
 
 ## `config-or-ask get VARIABLE`
 
@@ -122,7 +122,7 @@ EXAMPLES
   MY_VARIABLE_NAME=$(config-or-ask get MY_VARIABLE_NAME)
 ```
 
-_See code: [dist/commands/get.ts](https://github.com/entrostat/config-or-ask/blob/v0.0.0/dist/commands/get.ts)_
+_See code: [dist/commands/get.ts](https://github.com/entrostat/config-or-ask/blob/v1.0.0/dist/commands/get.ts)_
 
 ## `config-or-ask help [COMMAND]`
 

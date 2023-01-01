@@ -38,6 +38,35 @@ sudo ln -s /usr/local/src/config-or-ask/bin/config-or-ask /usr/local/bin/config-
 ```
 
 # Usage
+
+The idea for this CLI is that you use it in a bash script to retrieve values from a cache if you have it or from user input if you don't. Examples may include:
+
+```bash
+USERNAME=$(config-or-ask get MY_APP_USERNAME)
+# This will check if the variable MY_APP_USERNAME exists 
+# in the config or in the environment. If it is not there 
+# it will ask the user to input a value for it. Let's say
+# that the value wasn't there and the user enters "bob".
+echo ${USERNAME} 
+# Output: bob
+
+# You can also have custom config locations. For example
+# you may wan't project level configs. In that case, you
+# can use the --config flag to specify a config file.
+USERNAME=$(config-or-ask get MY_APP_USERNAME --config=./path/to/my/config.json)
+# It will automatically create that folder path and
+# config file if it doesn't exist.
+
+
+# Finally, there may be times when you don't want to
+# use the environment variables. In that case you
+# can use the --skip-env flag.
+USERNAME=$(config-or-ask get MY_APP_USERNAME --skip-env)
+
+```
+
+Here's how you use the CLI:
+
 <!-- usage -->
 ```sh-session
 $ npm install -g config-or-ask

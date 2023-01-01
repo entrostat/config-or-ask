@@ -14,6 +14,27 @@ This is a CLI that helps you get values in your bash scripts. The way it works i
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+
+
+# Quick Installation
+
+```bash
+npm install -g config-or-ask
+```
+
+# Full Installation
+
+In order to provide this CLI to all users, we'll want to install it from the binaries provided. Download the `.tar.gz` file from the releases page.
+
+Then run the following to install:
+```bash
+tar -xvf config-or-ask-<version>.tar.gz
+sudo rm -rf /usr/local/src/config-or-ask
+sudo rm -rf /usr/local/bin/config-or-ask
+sudo mv config-or-ask /usr/local/src/config-or-ask
+sudo ln -s /usr/local/src/config-or-ask/bin/config-or-ask /usr/local/bin/config-or-ask
+```
+
 # Usage
 <!-- usage -->
 ```sh-session

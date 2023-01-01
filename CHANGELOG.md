@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.0](https://github.com/entrostat/config-or-ask/compare/v1.0.1...v1.1.0) (2023-01-01)
+
+
+### Features
+
+* **keywords:** Updated the package.json keywords ([a378706](https://github.com/entrostat/config-or-ask/commit/a378706029df96c89bc5af68f933693ff238c4c5))
+
 ### [1.0.1](https://github.com/entrostat/config-or-ask/compare/v1.0.0...v1.0.1) (2023-01-01)
 
 

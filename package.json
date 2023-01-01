@@ -69,7 +69,13 @@
     },
     "bugs": "https://github.com/entrostat/config-or-ask/issues",
     "keywords": [
-        "oclif"
+        "oclif",
+        "cli",
+        "bash",
+        "script",
+        "config",
+        "cache",
+        "shell"
     ],
     "types": "dist/index.d.ts"
 }

@@ -14,6 +14,19 @@ This is a CLI that helps you get values in your bash scripts. The way it works i
 * [Quick Installation](#quick-installation)
 * [Full Installation](#full-installation)
 * [Usage](#usage)
+* [This will check if the variable MY_APP_USERNAME exists](#this-will-check-if-the-variable-my_app_username-exists)
+* [in the config or in the environment. If it is not there](#in-the-config-or-in-the-environment-if-it-is-not-there)
+* [it will ask the user to input a value for it. Let's say](#it-will-ask-the-user-to-input-a-value-for-it-lets-say)
+* [that the value wasn't there and the user enters "bob".](#that-the-value-wasnt-there-and-the-user-enters-bob)
+* [Output: bob](#output-bob)
+* [You can also have custom config locations. For example](#you-can-also-have-custom-config-locations-for-example)
+* [you may wan't project level configs. In that case, you](#you-may-want-project-level-configs-in-that-case-you)
+* [can use the --config flag to specify a config file.](#can-use-the---config-flag-to-specify-a-config-file)
+* [It will automatically create that folder path and](#it-will-automatically-create-that-folder-path-and)
+* [config file if it doesn't exist.](#config-file-if-it-doesnt-exist)
+* [Finally, there may be times when you don't want to](#finally-there-may-be-times-when-you-dont-want-to)
+* [use the environment variables. In that case you](#use-the-environment-variables-in-that-case-you)
+* [can use the --skip-env flag.](#can-use-the---skip-env-flag)
 * [Commands](#commands)
 <!-- tocstop -->
 
@@ -38,13 +51,42 @@ sudo ln -s /usr/local/src/config-or-ask/bin/config-or-ask /usr/local/bin/config-
 ```
 
 # Usage
+
+The idea for this CLI is that you use it in a bash script to retrieve values from a cache if you have it or from user input if you don't. Examples may include:
+
+```bash
+USERNAME=$(config-or-ask get MY_APP_USERNAME)
+# This will check if the variable MY_APP_USERNAME exists 
+# in the config or in the environment. If it is not there 
+# it will ask the user to input a value for it. Let's say
+# that the value wasn't there and the user enters "bob".
+echo ${USERNAME} 
+# Output: bob
+
+# You can also have custom config locations. For example
+# you may wan't project level configs. In that case, you
+# can use the --config flag to specify a config file.
+USERNAME=$(config-or-ask get MY_APP_USERNAME --config=./path/to/my/config.json)
+# It will automatically create that folder path and
+# config file if it doesn't exist.
+
+
+# Finally, there may be times when you don't want to
+# use the environment variables. In that case you
+# can use the --skip-env flag.
+USERNAME=$(config-or-ask get MY_APP_USERNAME --skip-env)
+
+```
+
+Here's how you use the CLI:
+
 <!-- usage -->
 ```sh-session
 $ npm install -g config-or-ask
 $ config-or-ask COMMAND
 running command...
 $ config-or-ask (--version)
-config-or-ask/1.1.0 linux-x64 node-v16.15.0
+config-or-ask/1.1.1 linux-x64 node-v16.15.0
 $ config-or-ask --help [COMMAND]
 USAGE
   $ config-or-ask COMMAND
@@ -79,7 +121,7 @@ EXAMPLES
   $ config-or-ask delete
 ```
 
-_See code: [dist/commands/delete.ts](https://github.com/entrostat/config-or-ask/blob/v1.1.0/dist/commands/delete.ts)_
+_See code: [dist/commands/delete.ts](https://github.com/entrostat/config-or-ask/blob/v1.1.1/dist/commands/delete.ts)_
 
 ## `config-or-ask get VARIABLE`
 
@@ -122,7 +164,7 @@ EXAMPLES
   MY_VARIABLE_NAME=$(config-or-ask get MY_VARIABLE_NAME)
 ```
 
-_See code: [dist/commands/get.ts](https://github.com/entrostat/config-or-ask/blob/v1.1.0/dist/commands/get.ts)_
+_See code: [dist/commands/get.ts](https://github.com/entrostat/config-or-ask/blob/v1.1.1/dist/commands/get.ts)_
 
 ## `config-or-ask help [COMMAND]`
 

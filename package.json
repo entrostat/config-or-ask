@@ -1,6 +1,6 @@
 {
     "name": "config-or-ask",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "CLI that stores values in a config and can be called in bash scripts. If the value is not in the config, then it'll look in your environment variables and if it's not there, it'll ask the user for input. It's a form of caching information for use in bash scripts.",
     "author": "Kerren Ortlepp @Kerren-Entrostat",
     "bin": {
@@ -61,7 +61,8 @@
         "version": "oclif readme && git add README.md",
         "readme": "oclif readme",
         "release": "entro-version release --master-branch-name=main --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\"",
-        "release:major": "entro-version release --master-branch-name=main --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\""
+        "release:major": "entro-version release --master-branch-name=main --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\"",
+        "build:tarballs": "oclif pack tarballs"
     },
     "engines": {
         "node": ">=12.0.0"

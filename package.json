@@ -1,0 +1,72 @@
+{
+  "name": "config-or-ask",
+  "version": "0.0.0",
+  "description": "This is a small utility that stores values in a config and can be called in bash scripts. If the value is not in the config, then it'll ask the user for input. It's a form of caching information for use in bash scripts.",
+  "author": "Kerren Ortlepp @Kerren-Entrostat",
+  "bin": {
+    "config-or-ask": "./bin/run"
+  },
+  "homepage": "https://github.com/entrostat/config-or-ask",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": "entrostat/config-or-ask",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^1.23.0",
+    "@oclif/plugin-help": "^5",
+    "@oclif/plugin-plugins": "^2.1.9"
+  },
+  "devDependencies": {
+    "@oclif/test": "^2.2.17",
+    "@types/chai": "^4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.18.11",
+    "chai": "^4",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^4",
+    "eslint-config-oclif-typescript": "^1.0.3",
+    "mocha": "^9",
+    "oclif": "^3",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  },
+  "oclif": {
+    "bin": "config-or-ask",
+    "dirname": "config-or-ask",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "hello": {
+        "description": "Say hello to the world and others"
+      }
+    }
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "bugs": "https://github.com/entrostat/config-or-ask/issues",
+  "keywords": [
+    "oclif"
+  ],
+  "types": "dist/index.d.ts"
+}

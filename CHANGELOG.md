@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [1.0.1](https://github.com/entrostat/config-or-ask/compare/v1.0.0...v1.0.1) (2023-01-01)
+
+
+### Bug Fixes
+
+* **devops:** Added the tarball build script ([4e52474](https://github.com/entrostat/config-or-ask/commit/4e52474ea4a1eed7d922863f1cfa99ce59035dfa))
+
 ## 1.0.0 (2023-01-01)
 
 

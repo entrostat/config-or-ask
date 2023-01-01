@@ -1,7 +1,8 @@
-oclif-hello-world
+config-or-ask
 =================
 
-oclif example Hello World CLI
+This is a CLI that helps you get values in your bash scripts. The way it works is that it looks to see if the variable name you're looking for is in a file or in the environment and if it is there then it returns that value. If the value is not there, then it asks the user for input and then stores that for future use.
+
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)

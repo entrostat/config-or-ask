@@ -41,7 +41,13 @@ export default class Get extends Command {
         }),
     };
 
-    static args = [{ name: 'variable', required: true }];
+    static args = [
+        {
+            name: 'variable',
+            required: true,
+            description: 'The name of the variable you would like to get',
+        },
+    ];
 
     public async run(): Promise<void> {
         const { args, flags } = await this.parse(Get);

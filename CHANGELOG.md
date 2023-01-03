@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [1.1.2](https://github.com/entrostat/config-or-ask/compare/v1.1.1...v1.1.2) (2023-01-03)
+
+
+### Bug Fixes
+
+* **docs:** Removed the table of contents generator because it was messing up the readme ([ead4853](https://github.com/entrostat/config-or-ask/commit/ead48532d439487d5d1417d77ca86561f4af75d2))
+
 ### [1.1.1](https://github.com/entrostat/config-or-ask/compare/v1.1.0...v1.1.1) (2023-01-01)
 
 ## [1.1.0](https://github.com/entrostat/config-or-ask/compare/v1.0.1...v1.1.0) (2023-01-01)
